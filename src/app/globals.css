@@ -1,26 +1,82 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ===== Solamada Design System Tokens ===== */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Colors - Primary */
+  --color-red: #B52A2D;
+  --color-red-dark: #8E2123;
+  --color-red-light: #D4484B;
+  --color-gold: #D4A017;
+  --color-gold-dark: #B08614;
+  --color-gold-light: #E8BA3A;
+  --color-black: #1A1A1A;
+  --color-black-pure: #000000;
+
+  /* Colors - Neutral */
+  --color-warm-white: #FFF9F2;
+  --color-white: #FFFFFF;
+  --color-warm-gray: #6B6560;
+  --color-light-gray: #F0EDED;
+  --color-medium-gray: #D1CDCA;
+
+  /* Colors - Semantic */
+  --color-background: var(--color-warm-white);
+  --color-foreground: var(--color-black);
+  --color-success: #4A7C59;
+  --color-error: #C93A3A;
+
+  /* Fonts */
+  --font-display: var(--font-playfair);
+  --font-body: var(--font-dm-sans);
+  --font-mono: var(--font-jetbrains);
+
+  /* Spacing - extending defaults */
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+  --spacing-30: 7.5rem;
+
+  /* Border Radius */
+  --radius-pill: 100px;
+  --radius-card: 16px;
+  --radius-input: 12px;
+  --radius-sm: 8px;
+
+  /* Shadows */
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 12px 40px rgba(0, 0, 0, 0.1);
+  --shadow-btn: 0 4px 12px rgba(181, 42, 45, 0.25);
+  --shadow-btn-hover: 0 15px 25px -7px rgba(0, 0, 0, 0.2);
+
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* ===== Base Styles ===== */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-warm-white);
+  color: var(--color-black);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Selection ===== */
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-white);
+}
+
+/* ===== Smooth Scroll ===== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
