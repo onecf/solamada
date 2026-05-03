@@ -6,15 +6,15 @@ export interface Cocktail {
   category: CocktailCategory;
   baseSpirit: string;
   ingredients: string[];
-  variant?: string;
+  /** Selectable flavor variations for this cocktail (if any) */
+  variants?: string[];
   image?: string;
-  // Placeholder visuals (swap out once real photos are available)
-  placeholderGradient: [string, string]; // [from, to]
+  placeholderGradient: [string, string];
   emoji: string;
 }
 
 export const cocktails: Cocktail[] = [
-  // Classic Cocktails
+  // ── Classic ──────────────────────────────────────────────
   {
     name: "Cuba Libre",
     slug: "cuba-libre",
@@ -39,6 +39,7 @@ export const cocktails: Cocktail[] = [
     category: "classic",
     baseSpirit: "Tequila",
     ingredients: ["Tequila", "Orange liqueur", "Lime juice", "Agave syrup", "Salt"],
+    variants: ["Classic", "Spicy", "Guava"],
     placeholderGradient: ["#2D8A4E", "#7EC8A0"],
     emoji: "🍹",
   },
@@ -47,8 +48,8 @@ export const cocktails: Cocktail[] = [
     slug: "spicy-passion",
     category: "classic",
     baseSpirit: "Varies",
-    ingredients: ["Mango or guava"],
-    variant: "Mango or Guava",
+    ingredients: ["Fresh fruit purée", "Lime juice", "Tajin rim"],
+    variants: ["Mango", "Guava"],
     placeholderGradient: ["#FF6B35", "#FFB347"],
     emoji: "🥭",
   },
@@ -76,7 +77,7 @@ export const cocktails: Cocktail[] = [
     category: "classic",
     baseSpirit: "White Rum",
     ingredients: ["White rum", "Lime juice", "Mint", "Simple syrup", "Soda water"],
-    variant: "Passion or Coconut",
+    variants: ["Original", "Passion Fruit", "Coconut"],
     placeholderGradient: ["#1A7A4A", "#56CCB2"],
     emoji: "🌿",
   },
@@ -86,7 +87,7 @@ export const cocktails: Cocktail[] = [
     category: "classic",
     baseSpirit: "Vodka",
     ingredients: ["Cucumber-mint vodka", "Lime juice", "Simple syrup", "Ginger beer"],
-    variant: "Pineapple or Watermelon",
+    variants: ["Original", "Pineapple", "Watermelon"],
     placeholderGradient: ["#B8860B", "#D4A017"],
     emoji: "🫚",
   },
@@ -109,7 +110,7 @@ export const cocktails: Cocktail[] = [
     emoji: "🌅",
   },
 
-  // Spritz Collection
+  // ── Spritz ───────────────────────────────────────────────
   {
     name: "Aperol Spritz",
     slug: "aperol-spritz",
@@ -147,7 +148,7 @@ export const cocktails: Cocktail[] = [
     emoji: "🍇",
   },
 
-  // Sangria
+  // ── Sangria ──────────────────────────────────────────────
   {
     name: "Sangria Roja",
     slug: "sangria-roja",

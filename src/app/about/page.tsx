@@ -5,7 +5,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Meet the team behind Solamada — a Miami-based mobile cocktail cart bringing craft bartending and warm celebration to every event.",
+    "Meet the team behind Solamada — a Houston-based mobile bar service born from Venezuelan roots. Learn the story behind the name.",
 };
 
 export default function AboutPage() {
@@ -20,7 +20,7 @@ export default function AboutPage() {
           About Solamada
         </h1>
         <p className="text-white/70 text-lg max-w-xl mx-auto leading-relaxed">
-          Born from a love of cocktails, community, and celebration.
+          Born from Venezuelan roots. Built for Houston celebrations.
         </p>
       </section>
 
@@ -39,27 +39,19 @@ export default function AboutPage() {
 
           <div className="prose prose-lg max-w-none space-y-6 text-warm-gray leading-relaxed">
             <p className="text-xl text-black font-medium leading-relaxed">
-              Solamada is a Miami-based mobile cocktail cart and bartending
-              service built for the moments that matter most.
+              The name <em>Solamada</em> carries a story that starts thousands of miles away — in Maracaibo, Venezuela.
             </p>
             <p>
-              The name says it all — <em>Sol</em> (sun) and <em>Amada</em>{" "}
-              (beloved). We believe every celebration deserves the warmth and
-              care of a well-crafted cocktail, poured with intention and
-              delivered with a smile.
+              Maracaibo is known as <em>&ldquo;La tierra del Sol amada&rdquo;</em> — the land of the beloved sun. It&apos;s a city of warmth, color, and a deep culture of gathering around good food, music, and drinks. <em>Sol Amada</em>: the beloved sun. That&apos;s where our name comes from, and it&apos;s the spirit we carry into every event we serve.
             </p>
             <p>
-              We bring the full bar experience to you — the mobile cart, the
-              professional bartender, the fresh juices, the garnishes, all of
-              it. Your job is simple: invite the people you love and let us
-              handle the rest.
+              We brought that Venezuelan warmth to Houston, TX — and turned it into a mobile bar experience. Solamada is a professional mobile bartending service for private and corporate events, built on the belief that the bar shouldn&apos;t just be functional. It should be a centerpiece. An experience. Something guests talk about.
             </p>
             <p>
-              Whether it&apos;s an intimate backyard gathering, a corporate
-              event, a birthday celebration, or a wedding reception, we
-              customize every service to fit your vision. Our TABC-certified
-              bartenders are trained not just in craft, but in hospitality —
-              because a great drink is only as good as the experience around it.
+              We work with you ahead of your event to define the cocktail menu — choosing from our curated selection of classics, spritz cocktails, and sangrias. On the day of the event, we arrive with everything needed to serve with craft and care: fresh juices, house-made syrups, garnishes, ice, and a TABC-certified bartender ready to bring it all to life. You take care of the spirits; we take care of everything else at the bar.
+            </p>
+            <p>
+              Whether it&apos;s a backyard birthday, a wedding reception, a corporate gathering, or anything in between — if there&apos;s a reason to celebrate, we want to be part of it.
             </p>
           </div>
         </div>
@@ -76,17 +68,17 @@ export default function AboutPage() {
               {
                 icon: "🍹",
                 title: "Craft First",
-                desc: "Every cocktail is made with fresh ingredients, house-made syrups, and real technique. No shortcuts.",
+                desc: "Every cocktail is made with fresh ingredients, house-made syrups, and real technique. No shortcuts, no pre-mixes — just well-made drinks.",
               },
               {
                 icon: "☀️",
                 title: "Warm Hospitality",
-                desc: "We're not just bartenders — we're part of your event. We show up with energy, care, and a genuine love for what we do.",
+                desc: "We show up with energy, genuine care, and the soul of Venezuelan hospitality. We&apos;re not just behind the bar — we&apos;re part of your celebration.",
               },
               {
-                icon: "🤝",
-                title: "Hassle-Free",
-                desc: "We handle everything from setup to breakdown. You shouldn't have to think about the bar — only enjoy it.",
+                icon: "🎯",
+                title: "Built Around You",
+                desc: "We customize everything to your event — the cocktail selection, the setup, the style. Your vision guides every decision we make.",
               },
             ].map((value) => (
               <div key={value.title} className="text-center">
@@ -107,7 +99,7 @@ export default function AboutPage() {
       <section className="py-16 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-display text-2xl font-bold text-black mb-6">
-            Professional & Certified
+            Professional &amp; Certified
           </h2>
           <div className="inline-flex items-center gap-3 bg-white border border-light-gray rounded-card px-8 py-5 shadow-card">
             <span className="text-2xl">🏅</span>
@@ -115,7 +107,7 @@ export default function AboutPage() {
               <p className="font-semibold text-black">TABC Certified</p>
               <p className="text-sm text-warm-gray">
                 All Solamada bartenders are Texas Alcoholic Beverage
-                Commission certified for responsible service.
+                Commission certified for responsible and professional service.
               </p>
             </div>
           </div>
@@ -129,15 +121,14 @@ export default function AboutPage() {
             Ready to work together?
           </h2>
           <p className="text-white/70 mb-8">
-            Book a free consultation and let&apos;s start planning your perfect
-            bar experience.
+            Tell us about your event and the cocktails you have in mind — we&apos;ll put together a quote just for you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/book"
               className="inline-flex items-center justify-center rounded-pill bg-gold px-8 py-4 font-body text-base font-bold uppercase tracking-widest text-black transition-all duration-300 hover:bg-gold-light hover:shadow-btn-hover hover:-translate-y-0.5"
             >
-              Book a Consultation
+              Get a Quote
             </Link>
             <Link
               href="/menu"

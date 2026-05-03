@@ -4,7 +4,7 @@ import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import type { Cocktail, CocktailCategory } from "@/lib/cocktails";
 
-const INCLUDED_MAX = 4;
+const INCLUDED_MAX = 2;
 
 const categoryLabels: Record<CocktailCategory, { title: string; desc: string }> = {
   classic: { title: "Classics", desc: "Timeless cocktails with a Solamada twist." },
@@ -29,17 +29,21 @@ function CocktailCard({
   selectionMode,
   selected,
   onToggle,
-  selectionIndex, // position in the selected array (0-based), -1 if not selected
+  selectionIndex,
+  selectedVariant,
+  onVariantSelect,
 }: {
   cocktail: Cocktail;
   selectionMode: boolean;
   selected: boolean;
   onToggle: (slug: string) => void;
   selectionIndex: number;
+  selectedVariant?: string;
+  onVariantSelect: (slug: string, variant: string) => void;
 }) {
-  // Only cards in position >= INCLUDED_MAX (5th onwards) are "extra"
   const isExtra = selected && selectionIndex >= INCLUDED_MAX;
   const isIncluded = selected && selectionIndex < INCLUDED_MAX;
+  const hasVariants = cocktail.variants && cocktail.variants.length > 0;
 
   return (
     <div
@@ -96,14 +100,37 @@ function CocktailCard({
       {/* Card body */}
       <div className="bg-white p-5">
         <h3 className="font-display text-base font-bold text-black mb-0.5">{cocktail.name}</h3>
-        {cocktail.variant && (
-          <p className="text-xs font-medium text-gold uppercase tracking-wider mb-1">
-            {cocktail.variant}
-          </p>
-        )}
-        <p className="text-sm text-warm-gray leading-relaxed">
+        <p className="text-sm text-warm-gray leading-relaxed mb-3">
           {cocktail.ingredients.join(" · ")}
         </p>
+
+        {/* Variant chips — shown when selected and has variants */}
+        {selectionMode && selected && hasVariants && (
+          <div
+            className="mt-1"
+            onClick={(e) => e.stopPropagation()} // prevent card toggle when clicking variant
+          >
+            <p className="text-xs font-bold uppercase tracking-widest text-warm-gray mb-2">
+              Pick a flavor:
+            </p>
+            <div className="flex flex-wrap gap-1.5">
+              {cocktail.variants!.map((variant) => (
+                <button
+                  key={variant}
+                  type="button"
+                  onClick={() => onVariantSelect(cocktail.slug, variant)}
+                  className={`px-3 py-1 rounded-full text-xs font-bold transition-all duration-150 ${
+                    selectedVariant === variant
+                      ? "bg-gold text-white"
+                      : "bg-warm-white border border-light-gray text-warm-gray hover:border-gold hover:text-gold"
+                  }`}
+                >
+                  {variant}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -113,11 +140,24 @@ export default function MenuClient({ cocktails }: { cocktails: Cocktail[] }) {
   const router = useRouter();
   const [selectionMode, setSelectionMode] = useState(false);
   const [selected, setSelected] = useState<string[]>([]);
+  const [selectedVariants, setSelectedVariants] = useState<Record<string, string>>({});
 
   const toggleDrink = useCallback((slug: string) => {
-    setSelected((prev) =>
-      prev.includes(slug) ? prev.filter((s) => s !== slug) : [...prev, slug]
-    );
+    setSelected((prev) => {
+      if (prev.includes(slug)) {
+        setSelectedVariants((v) => {
+          const next = { ...v };
+          delete next[slug];
+          return next;
+        });
+        return prev.filter((s) => s !== slug);
+      }
+      return [...prev, slug];
+    });
+  }, []);
+
+  const setVariant = useCallback((slug: string, variant: string) => {
+    setSelectedVariants((prev) => ({ ...prev, [slug]: variant }));
   }, []);
 
   const includedCount = Math.min(selected.length, INCLUDED_MAX);
@@ -125,13 +165,19 @@ export default function MenuClient({ cocktails }: { cocktails: Cocktail[] }) {
   const remaining = Math.max(0, INCLUDED_MAX - selected.length);
 
   const handleProceed = () => {
-    const params = selected.length > 0 ? `?menu=${selected.join(",")}` : "";
+    // Encode selection as "slug" or "slug:Variant" entries
+    const encoded = selected.map((slug) => {
+      const variant = selectedVariants[slug];
+      return variant ? `${slug}:${encodeURIComponent(variant)}` : slug;
+    });
+    const params = encoded.length > 0 ? `?menu=${encoded.join(",")}` : "";
     router.push(`/book${params}`);
   };
 
   const handleCancel = () => {
     setSelectionMode(false);
     setSelected([]);
+    setSelectedVariants({});
   };
 
   const categories: CocktailCategory[] = ["classic", "spritz", "sangria"];
@@ -218,6 +264,8 @@ export default function MenuClient({ cocktails }: { cocktails: Cocktail[] }) {
                       selected={selectionIndex !== -1}
                       onToggle={toggleDrink}
                       selectionIndex={selectionIndex}
+                      selectedVariant={selectedVariants[cocktail.slug]}
+                      onVariantSelect={setVariant}
                     />
                   );
                 })}
@@ -260,7 +308,7 @@ export default function MenuClient({ cocktails }: { cocktails: Cocktail[] }) {
                     <span className="text-white font-bold">{extraCount} extra</span>
                   </p>
                   <p className="text-white/40 text-xs mt-1">
-                    Extra cocktails are priced individually — we&apos;ll confirm costs during your consultation.
+                    Extra cocktails are priced individually — we&apos;ll confirm costs in your quote.
                   </p>
                 </>
               )}
@@ -277,13 +325,13 @@ export default function MenuClient({ cocktails }: { cocktails: Cocktail[] }) {
               }`}
             >
               {selected.length === 0 ? "Select cocktails to continue" : (
-                <>Book with This Selection <span>→</span></>
+                <>Get a Quote with This Selection <span>→</span></>
               )}
             </button>
 
             {/* Disclaimer */}
             <p className="text-center text-white/30 text-xs -mt-1">
-              No credit card required &middot; You can update your selection during the consultation
+              No credit card required &middot; You can update your selection during the quote process
             </p>
           </div>
         </div>

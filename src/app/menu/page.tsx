@@ -6,7 +6,7 @@ import MenuClient from "@/components/menu/MenuClient";
 export const metadata: Metadata = {
   title: "Cocktail Menu",
   description:
-    "Explore Solamada's full cocktail menu — 16 crafted drinks including classics, spritz, and sangria. Choose up to 4 for your event.",
+    "Explore Solamada's full cocktail menu — crafted drinks including classics, spritz, and sangria. Choose your favorites for your event.",
 };
 
 export default function MenuPage() {
@@ -15,7 +15,7 @@ export default function MenuPage() {
       {/* Hero */}
       <section className="bg-black text-white py-20 px-6 text-center">
         <p className="font-mono text-sm text-gold tracking-widest uppercase mb-4">
-          {cocktails.length} Signature Drinks
+          Crafted Cocktails
         </p>
         <h1 className="font-display text-5xl md:text-6xl font-bold mb-4">
           Our Cocktail Menu
@@ -48,7 +48,7 @@ export default function MenuPage() {
             href="/book"
             className="inline-flex items-center justify-center rounded-pill bg-red px-8 py-4 font-body text-base font-bold uppercase tracking-widest text-white shadow-btn transition-all duration-300 hover:bg-gold hover:shadow-btn-hover hover:-translate-y-0.5"
           >
-            Book a Free Consultation
+            Get a Quote
           </Link>
           <p className="text-warm-gray/60 text-xs mt-3">No credit card required</p>
         </div>

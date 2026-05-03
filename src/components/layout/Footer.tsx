@@ -6,7 +6,7 @@ const navLinks = [
   { href: "/services", label: "Services" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
-  { href: "/book", label: "Book Now" },
+  { href: "/book", label: "Get a Quote" },
 ];
 
 export default function Footer() {
@@ -80,7 +80,7 @@ export default function Footer() {
               href="/book"
               className="mt-2 inline-flex items-center justify-center rounded-pill bg-red px-5 py-2.5 font-body text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-gold"
             >
-              Book a Consultation
+              Get a Quote
             </Link>
           </div>
         </div>
@@ -90,7 +90,7 @@ export default function Footer() {
           <p>
             &copy; {new Date().getFullYear()} Solamada. All rights reserved.
           </p>
-          <p>Miami, FL &middot; TABC Certified</p>
+          <p>Houston, TX &middot; TABC Certified</p>
         </div>
       </div>
     </footer>

@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Solamada for event inquiries, cocktail cart bookings, and more. Based in Miami, FL.",
+    "Get in touch with Solamada for event inquiries, mobile bar bookings, and more. Based in Houston, TX.",
 };
 
 export default function ContactPage() {
@@ -59,7 +59,7 @@ export default function ContactPage() {
                   {
                     icon: "📍",
                     label: "Service Area",
-                    value: "Miami & South Florida",
+                    value: "Houston & surrounding areas",
                     href: null,
                     external: false,
                   },
@@ -94,14 +94,13 @@ export default function ContactPage() {
                 Ready to book?
               </h3>
               <p className="text-warm-gray text-sm mb-4">
-                Skip the back-and-forth. Book a free 30-minute consultation
-                and let&apos;s plan your event together.
+                Tell us about your event and your cocktail preferences — we&apos;ll put together a custom quote for you.
               </p>
               <Link
                 href="/book"
                 className="inline-flex items-center justify-center rounded-pill bg-red px-6 py-3 font-body text-sm font-bold uppercase tracking-widest text-white shadow-btn transition-all duration-300 hover:bg-gold hover:shadow-btn-hover hover:-translate-y-0.5"
               >
-                Book a Free Consultation
+                Get a Quote
               </Link>
             </div>
           </div>

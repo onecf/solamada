@@ -33,6 +33,19 @@ export default function Home() {
     <>
       {/* ── Hero ── */}
       <section className="relative flex min-h-screen items-center justify-center bg-black text-white overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=2400&auto=format&fit=crop"
+            alt="Elegant cocktails"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
+
         <div className="relative z-10 flex flex-col items-center gap-6 px-6 text-center max-w-2xl">
           <Image
             src="/images/logos/solamada-logo-blanco-sol.png"
@@ -49,11 +62,11 @@ export default function Home() {
               Your event, elevated.
             </h1>
             <p className="font-mono text-xs md:text-sm tracking-widest uppercase text-gold">
-              Fresh Cocktails &nbsp;&middot;&nbsp; Mobile Cart &nbsp;&middot;&nbsp; TABC-certified bartender
+              Fresh Cocktails &nbsp;&middot;&nbsp; Mobile Bar &nbsp;&middot;&nbsp; TABC-certified bartender
             </p>
           </div>
 
-          {/* CTAs — View Menu first (secondary), Book second (primary) */}
+          {/* CTAs — View Menu first (secondary), Get a Quote second (primary) */}
           <div className="flex flex-col sm:flex-row gap-3 mt-4">
             <Link
               href="/menu"
@@ -66,7 +79,7 @@ export default function Home() {
                 href="/book"
                 className="inline-flex items-center justify-center rounded-pill bg-red px-7 py-3.5 font-body text-sm font-bold uppercase tracking-widest text-white shadow-btn transition-all duration-300 hover:bg-gold hover:shadow-btn-hover hover:-translate-y-0.5"
               >
-                Book a Free Consultation
+                Get a Quote
               </Link>
               <span className="text-white/50 text-xs">No credit card required</span>
             </div>
@@ -78,25 +91,25 @@ export default function Home() {
       <section className="bg-warm-white py-20 md:py-24 px-6">
         <div className="mx-auto max-w-4xl text-center">
           <p className="font-mono text-xs text-gold tracking-widest uppercase mb-5">
-            Miami&apos;s Mobile Bar Experience
+            Houston&apos;s Mobile Bar Experience
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-black leading-tight mb-6">
-            We bring a fully stocked bar{" "}
-            <span className="italic font-normal">right to your door.</span>
+            We bring the bar{" "}
+            <span className="italic font-normal">right to your event.</span>
           </h2>
           <p className="text-warm-gray text-lg leading-relaxed max-w-2xl mx-auto mb-12">
-            Solamada is a professional mobile cocktail cart service serving Miami and South Florida.
-            We arrive with a stunning bar setup, fresh juices, house syrups, and every garnish needed
-            to craft 16 signature cocktails — all served by a TABC-certified bartender. Your only job
-            is to enjoy the celebration.
+            Solamada is a professional mobile bar and bartending service serving Houston, TX and surrounding areas.
+            We arrive with a beautiful bar setup, fresh juices, house-made syrups, and every garnish needed
+            to craft the cocktails you&apos;ve chosen — all served by a TABC-certified bartender.
+            You select the spirits; we handle everything else at the bar.
           </p>
 
           {/* Stats row */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { value: "16", label: "Signature cocktails" },
-              { value: "$400", label: "Starting price" },
-              { value: "35+", label: "Guests served" },
+              { value: "3hr+", label: "Minimum service" },
+              { value: "40", label: "Guests per event" },
+              { value: "2+", label: "Cocktails per package" },
               { value: "100%", label: "TABC certified" },
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col items-center gap-1">
@@ -128,23 +141,23 @@ export default function Home() {
             {[
               {
                 step: "01",
-                title: "Reach Out",
-                desc: "Tell us about your event — date, guest count, and vibe. We'll take it from there.",
+                title: "Request a Quote",
+                desc: "Tell us about your event — date, guest count, and which cocktails caught your eye. We&apos;ll get back to you with a custom proposal.",
               },
               {
                 step: "02",
-                title: "Customize",
-                desc: "Choose up to 4 signature cocktails from our curated menu. We'll guide your selections.",
+                title: "Finalize the Menu",
+                desc: "Choose your cocktails from our curated menu. We&apos;ll guide your selection and provide a detailed alcohol shopping list.",
               },
               {
                 step: "03",
-                title: "Confirm",
-                desc: "Review your proposal, sign, and secure your date with a 50% deposit.",
+                title: "Confirm & Deposit",
+                desc: "Review your proposal, sign, and secure your date with a 50% deposit. The remaining balance is due 2 days before the event.",
               },
               {
                 step: "04",
-                title: "Celebrate",
-                desc: "We arrive, set up, serve craft cocktails, and handle everything. You just enjoy.",
+                title: "We Handle the Bar",
+                desc: "We arrive, set up a beautiful bar, serve craft cocktails all evening, and handle full breakdown. You just celebrate.",
               },
             ].map((item) => (
               <div key={item.step} className="flex flex-col gap-3">
@@ -166,27 +179,27 @@ export default function Home() {
         <div className="mx-auto max-w-4xl">
           <div className="text-center mb-12">
             <p className="font-mono text-xs text-gold tracking-widest uppercase mb-3">
-              Starting at $400
+              The Solamada Experience
             </p>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-black mb-4">
-              The Solamada Experience
+              Everything at the Bar, Handled
             </h2>
             <p className="text-warm-gray text-lg max-w-xl mx-auto">
-              We bring the bar, the cocktails, and the craft — you bring the celebration.
+              We bring the setup, the craft, and the service. You bring the spirits and the celebration.
             </p>
           </div>
 
           <div className="bg-white rounded-card p-8 md:p-12 shadow-card border-2 border-gold">
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
               {[
-                "Custom Solamada mobile bar setup",
                 "1 professional TABC-certified bartender",
-                "Up to 4 signature crafted cocktails",
-                "All mixers, syrups, fresh juices & garnishes",
-                "Coolers stocked with ice",
-                "Disposable drinkware",
-                "Delivery, setup & full breakdown",
-                "4-hour minimum service",
+                "2 cocktails of your choice from our menu",
+                "General bartending for your provided beer, wine & soft drinks",
+                "All non-alcoholic mixers, syrups, fresh juices & garnishes",
+                "Coolers stocked with ice and water",
+                "Plastic drinkware included",
+                "Delivery, full setup & breakdown",
+                "3-hour minimum service window",
               ].map((feature) => (
                 <li key={feature} className="flex items-start gap-3">
                   <span className="text-gold font-bold mt-0.5 shrink-0">✓</span>
@@ -199,16 +212,16 @@ export default function Home() {
                 href="/book"
                 className="inline-flex items-center justify-center rounded-pill bg-red px-8 py-4 font-body text-sm font-bold uppercase tracking-widest text-white shadow-btn transition-all duration-300 hover:bg-gold hover:shadow-btn-hover hover:-translate-y-0.5"
               >
-                Book Now
+                Get a Quote
               </Link>
               <Link
                 href="/services"
                 className="inline-flex items-center justify-center rounded-pill border-2 border-black px-8 py-4 font-body text-sm font-bold uppercase tracking-widest text-black transition-all duration-300 hover:bg-black hover:text-white"
               >
-                Full Pricing Details
+                Full Service Details
               </Link>
             </div>
-            <p className="text-center text-xs text-warm-gray mt-4">No credit card required to book a consultation.</p>
+            <p className="text-center text-xs text-warm-gray mt-4">No credit card required</p>
           </div>
         </div>
       </section>
@@ -217,13 +230,13 @@ export default function Home() {
       <section className="bg-black py-20 md:py-28 px-6">
         <div className="mx-auto max-w-5xl text-center">
           <p className="font-mono text-xs text-gold tracking-widest uppercase mb-3">
-            16 Signature Drinks
+            The Menu
           </p>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
             A Menu Built for Celebration
           </h2>
           <p className="text-white/60 text-lg max-w-xl mx-auto mb-12">
-            From classic margaritas to bubbly spritz collections and crowd-pleasing sangrias.
+            From classic margaritas to bubbly spritz collections and crowd-pleasing sangrias — many with flavor variations to match your event&apos;s vibe.
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
@@ -268,13 +281,13 @@ export default function Home() {
             Ready to Elevate Your Event?
           </h2>
           <p className="text-white/80 text-lg mb-6">
-            Book a free 30-minute consultation. No obligation, just great cocktail planning.
+            Select your cocktails, tell us about your event, and we&apos;ll send you a custom quote.
           </p>
           <Link
             href="/book"
             className="inline-flex items-center justify-center rounded-pill bg-white px-8 py-4 font-body text-base font-bold uppercase tracking-widest text-red transition-all duration-300 hover:bg-gold hover:text-white hover:shadow-btn-hover hover:-translate-y-0.5"
           >
-            Book a Free Consultation
+            Get a Quote
           </Link>
           <p className="text-white/50 text-xs mt-3">No credit card required</p>
         </div>

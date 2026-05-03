@@ -3,9 +3,9 @@ import Link from "next/link";
 import { packages, addOns, terms } from "@/lib/packages";
 
 export const metadata: Metadata = {
-  title: "Services & Pricing",
+  title: "Services",
   description:
-    "Solamada's full bar service starting at $400 for a 4-hour event. Professional bartenders, crafted cocktails, full mobile setup.",
+    "Solamada's mobile bar service for Houston events. Professional bartenders, crafted cocktails, full bar setup — customized for your celebration.",
 };
 
 export default function ServicesPage() {
@@ -14,14 +14,13 @@ export default function ServicesPage() {
       {/* Hero */}
       <section className="bg-black text-white py-20 px-6 text-center">
         <p className="font-mono text-sm text-gold tracking-widest uppercase mb-4">
-          Transparent Pricing
+          What&apos;s Included
         </p>
         <h1 className="font-display text-5xl md:text-6xl font-bold mb-6">
-          Services & Pricing
+          Our Service
         </h1>
         <p className="text-white/70 text-lg max-w-xl mx-auto leading-relaxed">
-          No hidden fees. No surprises. Just a great bar experience for your
-          event.
+          A curated mobile bartending experience, built around your event — from cocktail selection to full bar setup and service.
         </p>
       </section>
 
@@ -38,25 +37,23 @@ export default function ServicesPage() {
                 Our Package
               </span>
 
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
-                <div>
-                  <h2 className="font-display text-3xl font-bold text-black">
-                    {pkg.name}
-                  </h2>
-                  <p className="text-warm-gray mt-2 max-w-lg">{pkg.description}</p>
-                </div>
-                <div className="shrink-0 text-right">
-                  <span className="font-mono text-4xl font-medium text-gold">
-                    ${pkg.price}
+              <div className="mb-2">
+                <h2 className="font-display text-3xl font-bold text-black">
+                  {pkg.name}
+                </h2>
+                <div className="flex flex-wrap gap-3 mt-3 mb-4">
+                  <span className="inline-flex items-center gap-1.5 bg-warm-white border border-light-gray rounded-pill px-3 py-1 text-xs font-medium text-warm-gray">
+                    ⏱ {pkg.minHours}hr minimum
                   </span>
-                  <p className="text-sm text-warm-gray mt-1">
-                    4-hour event · up to 35 guests
-                  </p>
+                  <span className="inline-flex items-center gap-1.5 bg-warm-white border border-light-gray rounded-pill px-3 py-1 text-xs font-medium text-warm-gray">
+                    👥 Up to {pkg.maxGuests} guests
+                  </span>
                 </div>
+                <p className="text-warm-gray max-w-lg">{pkg.description}</p>
               </div>
 
               {/* Features */}
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-10">
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-8 mb-10">
                 {pkg.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
                     <span className="text-gold font-bold mt-0.5 shrink-0">✓</span>
@@ -70,7 +67,7 @@ export default function ServicesPage() {
                   href="/book"
                   className="inline-flex items-center justify-center rounded-pill bg-red px-8 py-4 font-body text-sm font-bold uppercase tracking-widest text-white shadow-btn transition-all duration-300 hover:bg-gold hover:shadow-btn-hover hover:-translate-y-0.5"
                 >
-                  Book a Consultation
+                  Get a Quote
                 </Link>
                 <Link
                   href="/menu"
@@ -88,29 +85,24 @@ export default function ServicesPage() {
       <section className="bg-warm-white py-16 px-6">
         <div className="max-w-3xl mx-auto">
           <h2 className="font-display text-3xl font-bold text-black mb-2">
-            Add-ons
+            Customize Your Experience
           </h2>
           <p className="text-warm-gray mb-8">
-            Scale your service as your guest list grows.
+            Every event is different. We offer a range of add-ons to tailor the service to your needs — just mention what you&apos;re interested in when you reach out.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {addOns.map((addon) => (
               <div
                 key={addon.name}
-                className="bg-white rounded-card p-6 shadow-card border border-light-gray flex items-center justify-between"
+                className="bg-white rounded-card p-6 shadow-card border border-light-gray"
               >
-                <span className="font-medium text-black">{addon.name}</span>
-                <span className="text-right">
-                  <span className="font-mono text-xl font-medium text-gold block">
-                    ${addon.price}
-                  </span>
-                  <span className="text-xs text-warm-gray">{addon.unit}</span>
-                </span>
+                <p className="font-semibold text-black mb-1">{addon.name}</p>
+                <p className="text-sm text-warm-gray leading-relaxed">{addon.description}</p>
               </div>
             ))}
           </div>
-          <p className="text-sm text-warm-gray mt-4">
-            * A travel/delivery fee may apply depending on your event location.
+          <p className="text-sm text-warm-gray mt-6">
+            Pricing for add-ons is included in your custom quote. A travel fee may apply depending on your event location.
           </p>
         </div>
       </section>
@@ -141,15 +133,15 @@ export default function ServicesPage() {
             Let&apos;s Plan Your Bar Experience
           </h2>
           <p className="text-white/70 mb-8">
-            Book a free 30-minute consultation and we&apos;ll walk you through
-            everything — cocktail selection, logistics, and more.
+            Tell us about your event and your cocktail preferences — we&apos;ll build a custom quote tailored to you.
           </p>
           <Link
             href="/book"
             className="inline-flex items-center justify-center rounded-pill bg-gold px-8 py-4 font-body text-base font-bold uppercase tracking-widest text-black transition-all duration-300 hover:bg-gold-light hover:shadow-btn-hover hover:-translate-y-0.5"
           >
-            Book a Free Consultation
+            Get a Quote
           </Link>
+          <p className="text-white/40 text-xs mt-3">No credit card required</p>
         </div>
       </section>
     </main>
